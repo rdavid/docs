@@ -1,0 +1,93 @@
+// Settings:
+:description: The article covers tainted kernel tech preview bug.
+:doctype: book
+:pdf-page-size: A4
+:toc: macro
+:!toc-title:
+
+// URLs:
+:url-catalog: https://github.com/test-network-function/cnf-certification-test/blob/main/CATALOG.md
+:url-cnf-cert: https://github.com/test-network-function/cnf-certification-test
+:url-dci-master-1: https://www.distributed-ci.io/jobs/94f33fd7-5849-4cd7-86e9-7f5bf5c4c147/tests/39ba86e5-4dc7-48ce-9df9-c2cfa176abc5
+:url-dci-master-2: https://www.distributed-ci.io/jobs/8705b061-1e40-4a53-8624-11e6d16d25a7/tests/6c5dd9c2-cd04-4645-89f6-513130578155
+:url-linux: https://docs.kernel.org/admin-guide/tainted-kernels.html
+:url-solution: https://access.redhat.com/solutions/40594
+:url-tainted: https://github.com/test-network-function/cnf-certification-test/blob/main/CATALOG.md#platform-alteration-tainted-node-kernel
+
+
+= Tainted kernel tech preview
+
+toc::[]
+
+.Revision History
+[%autowidth]
+|===
+| Version | Date | Who | Changes
+| 1.0 | Jun 27, 2023 | David Rabkin | Initial Version
+|===
+
+.Terminology
+[%autowidth]
+|===
+| Acronym | Meaning
+| OCP | OpenShift Container Platform
+| CNF | Containerized Network Function
+|===
+
+== History
+
+A major part of Telco partner certification is
+{url-cnf-cert}[CNF Certification Test].
+The test suite covers {url-catalog}[88 test cases] to verify if best practices
+for deployment on Red Hat OpenShift clusters are followed.
+One of the test is `platform-alteration-tainted-node-kernel`.
+It ensures that the Node(s) hosting CNFs do not utilize tainted kernels.
+See more about tainted kernels in Linux kernel {url-linux}[documentation].
+Our team struggled tainted kernels in certification of OCP v4.10 and v4.11.
+Most of the time the failure was caused by unfinished kernel update or an old
+BIOS firmware version.
+Reboot or/and BIOS firmware updated resolved the failure.
+There is a well composed article on {url-solution}[the issue].
+
+== Story
+
+CNF Certification Tests v4.2.4 constantly fails
+`platform-alteration-tainted-node-kernel` test with an error message:
+```
+Taints mask=65536 - Decoded taints: [auxiliary taint, defined for and used by
+distros (tainted bit 16)]
+```
+
+The test checks a tainted kernel on every node by, the kernel is tainted:
+```
+Pod IP: 192.168.26.51
+If you don't see a command prompt, try pressing enter.
+sh-4.4# chroot /host
+sh-4.4# cat /proc/sys/kernel/tainted
+65536
+```
+
+Zero value means the kernel is OK:
+```
+Pod IP: 192.168.26.52
+If you don't see a command prompt, try pressing enter.
+sh-4.4# chroot /host
+sh-4.4# cat /proc/sys/kernel/tainted
+0
+```
+
+The tainted kernel test constantly fails on one of master nodes.
+{url-dci-master-1}[The job] reports on `master-1`,
+{url-dci-master-2}[the job] reports on `master-2`.
+If I reboot a master with a tainted kernel, the failure happens on the next
+master.
+I see the following failures migration on masters after the reboots:
+`0->1->2->0`.
+
+== Problem
+
+A problem.
+
+== Resolution
+
+A resolution.
