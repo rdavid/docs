@@ -1,0 +1,17 @@
+---
+name: linters
+'on': push
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: crate-ci/typos@master
+      - uses: errata-ai/vale-action@reviewdog
+        with:
+          fail_on_error: true
+          files: ./*.adoc
+      - uses: ibiqlik/action-yamllint@v3
+        with:
+          file_or_dir: .github/*.yml .github/workflows/*.yml
+          strict: true
