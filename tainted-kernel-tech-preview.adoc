@@ -6,11 +6,14 @@
 :!toc-title:
 
 // URLs:
+:url-bug: https://issues.redhat.com/browse/OCPBUGS-3083
 :url-catalog: https://github.com/test-network-function/cnf-certification-test/blob/main/CATALOG.md
 :url-cnf-cert: https://github.com/test-network-function/cnf-certification-test
 :url-dci-master-1: https://www.distributed-ci.io/jobs/94f33fd7-5849-4cd7-86e9-7f5bf5c4c147/tests/39ba86e5-4dc7-48ce-9df9-c2cfa176abc5
 :url-dci-master-2: https://www.distributed-ci.io/jobs/8705b061-1e40-4a53-8624-11e6d16d25a7/tests/6c5dd9c2-cd04-4645-89f6-513130578155
 :url-linux: https://docs.kernel.org/admin-guide/tainted-kernels.html
+:url-rhel-85: https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/8.5_release_notes/technology_previews
+:url-rhel-86: https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/8.6_release_notes/technology_previews
 :url-solution: https://access.redhat.com/solutions/40594
 :url-tainted: https://github.com/test-network-function/cnf-certification-test/blob/main/CATALOG.md#platform-alteration-tainted-node-kernel
 
@@ -83,6 +86,32 @@ If I reboot a master with a tainted kernel, the failure happens on the next
 master.
 I see the following failures migration on masters after the reboots:
 `0->1->2->0`.
+
+OCP 4.12 uses RHCOS based on 8.6. From {url-solution}[here]:
+```
+With the TAINT_TECH_PREVIEW mask value being removed upstream and within RHEL 9
+the TAINT_AUX bit is used instead of TAINT_TECH_PREVIEW within 8.6 and later
+kernels.
+```
+
+Technical preview is reported by the kernel, run at the node with the taint:
+```
+sh-4.4# dmesg|grep TECH
+[17980.575402] TECH PREVIEW: kTLS may not be fully supported.
+sh-4.4# uname -a
+Linux master-0.r207-6node.r207.lab.eng.cert.redhat.com
+4.18.0-372.49.1.el8_6.x86_64 #1 SMP Thu Mar 9 21:11:55 EST 2023 x86_64 x86_64
+x86_64 GNU/Linux
+```
+
+`kTLS` is listed as Tech Preview in {url-rhel-85}[RHEL8.5] and is not for
+{url-rhel-86}[RHEL8.6], which confuses, because they say OCP 4.12 is based on
+RHEL8.6, but kTLS still is in Tech Preview. Probably, it is a bug in
+documentation.
+
+There is a half year old {url-bug}[bug]. It blames `metal3` with final
+resolution “Closing as there is no solution for 4.12 and the taint should go
+away when we move to 4.13”.
 
 == Problem
 
