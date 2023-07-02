@@ -40,12 +40,18 @@ toc::[]
 == History
 
 A major part of Telco partner certification is
-{url-cnf-cert}[CNF Certification Test].
-The test suite covers {url-catalog}[88 test cases] to verify if best practices
-for deployment on Red Hat OpenShift clusters are followed.
-One of the test is `platform-alteration-tainted-node-kernel`.
-It ensures that the Node hosting CNFs do not utilize tainted kernels.
-See more about tainted kernels in Linux kernel {url-linux}[documentation].
+{url-cnf-cert}[CNF Certification Test]. These test cases are specifically
+designed to verify whether the deployment of the Telco partner's solution on
+Red Hat OpenShift follows the best practices. By conducting these tests, we
+ensure that the implementation aligns with the recommended standards and
+guidelines for optimal performance and compatibility.
+
+Among the {url-catalog}[88 test cases] in the suite, one of them is named
+`platform-alteration-tainted-node-kernel`. It verifies that the nodes hosting
+CNFs do not utilize tainted kernels. For more detailed information regarding
+tainted kernels in the Linux kernel, you can refer to the
+{url-linux}[documentation].
+
 Our team struggled tainted kernels in certification of OCP v4.10 and v4.11.
 Most of the time the failure was caused by unfinished kernel update or an old
 BIOS firmware version.
