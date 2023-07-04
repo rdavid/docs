@@ -36,6 +36,7 @@ toc::[]
 | Acronym | Meaning
 | BIOS | Basic Input/Output System
 | CNF | Containerized Network Function
+| GA | General Availability
 | kTLS | Kernel Transport Layer Security
 | Metal3 | Bare metal host provisioning for Kubernetes
 | RHCOS | Red Hat Enterprise Linux CoreOS operating system
@@ -58,22 +59,24 @@ It verifies that the nodes hosting CNFs do not utilize tainted kernels. For
 more detailed information regarding tainted kernels in the Linux kernel, you
 can refer to the {url-linux}[documentation].
 
-Our team struggled tainted kernels in certification of OCP v4.10 and v4.11.
-Most of the time the failure was caused by unfinished kernel update or an old
-BIOS firmware version.
-Reboot or/and BIOS firmware updated resolved the failure.
-See a well composed article on {url-solution}[the issue].
+During the certification process of OCP versions 4.10 and 4.11, our team
+encountered difficulties related to tainted kernels.
+The majority of failures were attributed to incomplete kernel updates or
+outdated BIOS firmware versions.
+Resolving the issue was possible by performing reboots and updating the BIOS
+firmware. I recommend referring to a well-written article dedicated to this
+{url-solution}[particular issue].
 
 == Story
-
-CNF Certification Tests v4.2.4 constantly fails
-`platform-alteration-tainted-node-kernel` test with an error message:
+The `platform-alteration-tainted-node-kernel` test in CNF Certification Tests
+v4.2.4 consistently fails, accompanied by the following error message:
 ```
 Taints mask=65536 - Decoded taints: [auxiliary taint, defined for and used by
 distros (tainted bit 16)]
 ```
 
-The test checks a tainted kernel on every node by, the kernel is tainted:
+The test examines the taint status of the kernel on each node, indicating
+whether the kernel is tainted or not:
 ```
 Pod IP: 192.168.26.51
 If you don't see a command prompt, try pressing enter.
@@ -82,7 +85,7 @@ sh-4.4# cat /proc/sys/kernel/tainted
 65536
 ```
 
-Zero value means the kernel is OK:
+A zero value indicates that the kernel is in a satisfactory state:
 ```
 Pod IP: 192.168.26.52
 If you don't see a command prompt, try pressing enter.
@@ -91,13 +94,13 @@ sh-4.4# cat /proc/sys/kernel/tainted
 0
 ```
 
-The tainted kernel test constantly fails on one of master nodes.
-{url-dci-master-1}[The job] reports on `master-1`,
-{url-dci-master-2}[the job] reports on `master-2`.
-If I reboot a master with a tainted kernel, the failure happens on the next
-master.
-I see the following failures migration on masters after the reboots:
-`0->1->2->0`.
+The tainted kernel test continues to fail on one of the master nodes.
+{url-dci-master-1}[The job] reports the failure on `master-1`, and when I
+reboot that particular master with the tainted kernel,
+{url-dci-master-2}[the failure] then occurs on the next master, which is
+`master-2`.
+This failure pattern follows a migration sequence of `0→>1→>2→>0` after each
+reboot.
 
 OCP 4.12 uses RHCOS based on 8.6. From {url-solution}[here]:
 ```
@@ -106,7 +109,7 @@ the TAINT_AUX bit is used instead of TAINT_TECH_PREVIEW within 8.6 and later
 kernels.
 ```
 
-Technical preview is reported by the kernel, run at the node with the taint:
+The node with the taint reports that it is running a technical preview module:
 ```
 sh-4.4# dmesg|grep TECH
 [17980.575402] TECH PREVIEW: kTLS may not be fully supported.
@@ -117,24 +120,30 @@ x86_64 GNU/Linux
 ```
 
 `kTLS` is listed as Tech Preview in {url-rhel-85}[RHEL8.5] and is not for
-{url-rhel-86}[RHEL8.6], OCP 4.12 is based on RHEL8.6, but kTLS still is in Tech
-Preview.
-Probably, it is a bug in documentation.
+{url-rhel-86}[RHEL8.6], OCP 4.12 is based on RHEL8.6, but `kTLS` still is in
+Tech Preview.
+This inconsistency suggests a potential error in the documentation.
 
-There is a half year old {url-bug}[bug].
-It blames `metal3` with final resolution “Closing as there is no solution for
-4.12 and the taint should go away when we move to 4.13”.
-There are more details on {url-slack[Slack thread].
+There is {url-bug}[an existing bug] that is approximately six months old,
+which attributes the issue to Metal3.
+The bug has been resolved with the final resolution stating that there is no
+solution for version 4.12, and the taint is expected to be resolved when
+transitioning to version 4.13.
+Further details regarding this matter can be found in the
+{url-slack}[Slack thread].
 
 == Problem
 
-The tests are run by our partners on their CNFs.
-It is a problem for the certification team to describe why GA OCP 4.12 uses
-`kTLS` in Tech Preview.
-Actually it raises a red flag for a security expert.
+The certification team faces a challenge in explaining why the GA version of
+OCP 4.12 utilizes `kTLS`, which is still in the Technical Preview phase.
+This situation raises concerns for security experts, as it could be perceived
+as a potential security vulnerability.
+The tests, performed by our partners on their CNFs, further emphasize the need
+to address this issue and provide a satisfactory explanation.
 
 == Resolution
 
-A possible resolution is reverting `metal3` back to RHCOS8.
-It will not use `kTLS`, as it should be in the GA version.
-See details in {url-metal3}[the comment].
+One potential solution is to revert Metal3 back to RHCOS8, which would
+eliminate the use of `kTLS` in the GA version as it is intended.
+More information about this resolution can be found in the
+{url-metal3}[accompanying comment].
