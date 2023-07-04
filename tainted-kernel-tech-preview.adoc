@@ -12,11 +12,12 @@
 :url-dci-master-1: https://www.distributed-ci.io/jobs/94f33fd7-5849-4cd7-86e9-7f5bf5c4c147/tests/39ba86e5-4dc7-48ce-9df9-c2cfa176abc5
 :url-dci-master-2: https://www.distributed-ci.io/jobs/8705b061-1e40-4a53-8624-11e6d16d25a7/tests/6c5dd9c2-cd04-4645-89f6-513130578155
 :url-linux: https://docs.kernel.org/admin-guide/tainted-kernels.html
+:url-metal3: https://issues.redhat.com/browse/OCPBUGS-3083?focusedId=21433873&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-21433873
 :url-rhel-85: https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/8.5_release_notes/technology_previews
 :url-rhel-86: https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/8.6_release_notes/technology_previews
+:url-slack: https://redhat-internal.slack.com/archives/CQNBUEVM2/p1686838356722479
 :url-solution: https://access.redhat.com/solutions/40594
 :url-tainted: https://github.com/test-network-function/cnf-certification-test/blob/main/CATALOG.md#platform-alteration-tainted-node-kernel
-
 
 = Tainted kernel tech preview
 
@@ -33,24 +34,29 @@ toc::[]
 [%autowidth]
 |===
 | Acronym | Meaning
-| OCP | OpenShift Container Platform
+| BIOS | Basic Input/Output System
 | CNF | Containerized Network Function
+| kTLS | Kernel Transport Layer Security
+| Metal3 | Bare metal host provisioning for Kubernetes
+| RHCOS | Red Hat Enterprise Linux CoreOS operating system
+| RHEL | Red Hat Enterprise Linux operating system
+| OCP | OpenShift Container Platform
 |===
 
 == History
 
 A major part of Telco partner certification is
-{url-cnf-cert}[CNF Certification Test]. These test cases are specifically
-designed to verify whether the deployment of the Telco partner's solution on
-Red Hat OpenShift follows the best practices. By conducting these tests, we
-ensure that the implementation aligns with the recommended standards and
-guidelines for optimal performance and compatibility.
+{url-cnf-cert}[CNF Certification Test].
+These test cases are specifically designed to verify whether the deployment of
+the Telco partner's solution on Red Hat OpenShift follows the best practices.
+By conducting these tests, we ensure that the implementation aligns with the
+recommended standards and guidelines for optimal performance and compatibility.
 
 Among the {url-catalog}[88 test cases] in the suite, one of them is named
-`platform-alteration-tainted-node-kernel`. It verifies that the nodes hosting
-CNFs do not utilize tainted kernels. For more detailed information regarding
-tainted kernels in the Linux kernel, you can refer to the
-{url-linux}[documentation].
+`platform-alteration-tainted-node-kernel`.
+It verifies that the nodes hosting CNFs do not utilize tainted kernels. For
+more detailed information regarding tainted kernels in the Linux kernel, you
+can refer to the {url-linux}[documentation].
 
 Our team struggled tainted kernels in certification of OCP v4.10 and v4.11.
 Most of the time the failure was caused by unfinished kernel update or an old
@@ -111,18 +117,24 @@ x86_64 GNU/Linux
 ```
 
 `kTLS` is listed as Tech Preview in {url-rhel-85}[RHEL8.5] and is not for
-{url-rhel-86}[RHEL8.6], which confuses, because they say OCP 4.12 is based on
-RHEL8.6, but kTLS still is in Tech Preview. Probably, it is a bug in
-documentation.
+{url-rhel-86}[RHEL8.6], OCP 4.12 is based on RHEL8.6, but kTLS still is in Tech
+Preview.
+Probably, it is a bug in documentation.
 
-There is a half year old {url-bug}[bug]. It blames `metal3` with final
-resolution “Closing as there is no solution for 4.12 and the taint should go
-away when we move to 4.13”.
+There is a half year old {url-bug}[bug].
+It blames `metal3` with final resolution “Closing as there is no solution for
+4.12 and the taint should go away when we move to 4.13”.
+There are more details on {url-slack[Slack thread].
 
 == Problem
 
-A problem.
+The tests are run by our partners on their CNFs.
+It is a problem for the certification team to describe why GA OCP 4.12 uses
+`kTLS` in Tech Preview.
+Actually it raises a red flag for a security expert.
 
 == Resolution
 
-A resolution.
+A possible resolution is reverting `metal3` back to RHCOS8.
+It will not use `kTLS`, as it should be in the GA version.
+See details in {url-metal3}[the comment].
