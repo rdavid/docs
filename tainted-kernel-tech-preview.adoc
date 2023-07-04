@@ -13,8 +13,6 @@
 :url-dci-master-2: https://www.distributed-ci.io/jobs/8705b061-1e40-4a53-8624-11e6d16d25a7/tests/6c5dd9c2-cd04-4645-89f6-513130578155
 :url-linux: https://docs.kernel.org/admin-guide/tainted-kernels.html
 :url-metal3: https://issues.redhat.com/browse/OCPBUGS-3083?focusedId=21433873&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-21433873
-:url-rhel-85: https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/8.5_release_notes/technology_previews
-:url-rhel-86: https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/8.6_release_notes/technology_previews
 :url-slack: https://redhat-internal.slack.com/archives/CQNBUEVM2/p1686838356722479
 :url-solution: https://access.redhat.com/solutions/40594
 :url-tainted: https://github.com/test-network-function/cnf-certification-test/blob/main/CATALOG.md#platform-alteration-tainted-node-kernel
@@ -119,18 +117,15 @@ Linux master-0.r207-6node.r207.lab.eng.cert.redhat.com
 x86_64 GNU/Linux
 ```
 
-`kTLS` is listed as Tech Preview in {url-rhel-85}[RHEL8.5] and is not for
-{url-rhel-86}[RHEL8.6], OCP 4.12 is based on RHEL8.6, but `kTLS` still is in
-Tech Preview.
-This inconsistency suggests a potential error in the documentation.
-
-There is {url-bug}[an existing bug] that is approximately six months old,
-which attributes the issue to Metal3.
+There is {url-bug}[an existing bug] (Red Hat internal) that is approximately
+six months old, which attributes the issue to Metal3.
 The bug has been resolved with the final resolution stating that there is no
 solution for version 4.12, and the taint is expected to be resolved when
 transitioning to version 4.13.
+The issue in Metal3 is caused by using RHEL 9-based images to build the
+container, which use some system calls that end up loading `kTLS`.
 Further details regarding this matter can be found in the
-{url-slack}[Slack thread].
+{url-slack}[Slack thread] (Red Hat internal).
 
 == Problem
 
@@ -146,4 +141,4 @@ to address this issue and provide a satisfactory explanation.
 One potential solution is to revert Metal3 back to RHCOS8, which would
 eliminate the use of `kTLS` in the GA version as it is intended.
 More information about this resolution can be found in the
-{url-metal3}[accompanying comment].
+{url-metal3}[accompanying comment] (Red Hat internal).
