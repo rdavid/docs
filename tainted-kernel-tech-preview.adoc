@@ -67,11 +67,14 @@ firmware. I recommend referring to a well-written article dedicated to this
 
 == Story
 The `platform-alteration-tainted-node-kernel` test in CNF Certification Tests
-v4.2.4 consistently fails, accompanied by the following error message:
+v4.2.4 consistently fails on OCP v4.12.10, accompanied by the following error
+message:
 ```
 Taints mask=65536 - Decoded taints: [auxiliary taint, defined for and used by
 distros (tainted bit 16)]
 ```
+
+The test is passed on OCP v4.11 and on OCP v4.13.
 
 The test examines the taint status of the kernel on each node, indicating
 whether the kernel is tainted or not:
