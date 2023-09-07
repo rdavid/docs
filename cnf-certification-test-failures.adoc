@@ -1,0 +1,68 @@
+// Settings:
+:description: The article CNF Certification Test failures.
+:doctype: book
+:pdf-page-size: A4
+:toc: macro
+:!toc-title:
+
+// Valiables
+:ocp-version: 4.13
+// URLs:
+:url-catalog: https://github.com/test-network-function/cnf-certification-test/blob/main/CATALOG.md
+:url-cnf-cert: https://github.com/test-network-function/cnf-certification-test
+:url-operators: https://docs.google.com/spreadsheets/d/1E_Xafj_QGjDondIXj6bi0qCU0KQiOIRbJICPYHnZd2s/edit#gid=0
+:url-reports: https://docs.google.com/spreadsheets/d/19u1U1cdjLiRQq4v1HbUGY-sF7kFNWCwRY93PMrZ2ULM/edit#gid=75701192
+:url-root: https://github.com/test-network-function/cnf-certification-test/blob/main/CATALOG.md#access-control-security-context-non-root-user-check
+:url-slack: https://redhat-internal.slack.com/archives/C05PKB9TT5G
+:url-tainted: https://github.com/test-network-function/cnf-certification-test/blob/main/CATALOG.md#platform-alteration-tainted-node-kernel
+:url-termination: https://github.com/test-network-function/cnf-certification-test/blob/main/CATALOG.md#observability-termination-policy
+:url-ubi: https://github.com/test-network-function/cnf-certification-test/blob/main/CATALOG.md#platform-alteration-isredhat-release
+
+= CNF Certification Test failures
+
+toc::[]
+
+.Revision History
+[%autowidth]
+|===
+| Version | Date | Who | Changes
+| 1.0 | September 7, 2023 | David Rabkin | Initial Version
+|===
+
+.Terminology
+[%autowidth]
+|===
+| Acronym | Meaning
+| CNF | Containerized Network Function
+| OCP | OpenShift Container Platform
+|===
+
+== Overview
+
+A major part of Telco partner certification is
+{url-cnf-cert}[CNF Certification Test].
+These test cases are specifically designed to verify whether the deployment of
+the Telco partner's solution on Red Hat OpenShift follows the best practices.
+By conducting these tests, we ensure that the implementation aligns with the
+recommended standards and guidelines for optimal performance and compatibility.
+
+In the suite, there are {url-catalog}[88 test cases], consisting of both
+mandatory and optional cases.
+These cases are divided among nine different suites.
+
+== Operators
+
+We conducted the {url-cnf-cert}[CNF Certification Test] on over two hundred of
+{url-operators}[Red Hat's operators] on OCP {ocp-version}. As a result, we
+identified a total of over seven thousand failures. You can find more
+information in {url-reports}[the report].
+
+== Failures
+
+The first priority should be addressing the most commonly required mandatory
+tests:
+
+- {url-tainted}[`platform-alteration-tainted-node-kernel`]
+- {url-root}[`access-control-security-context-non-root-user-check`]
+- {url-termination}[`observability-termination-policy`]
+- {url-ubi}[`platform-alteration-isredhat-release`]
