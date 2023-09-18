@@ -15,6 +15,7 @@
 :url-root: https://github.com/test-network-function/cnf-certification-test/blob/main/CATALOG.md#access-control-security-context-non-root-user-check
 :url-slack: https://redhat-internal.slack.com/archives/C05PKB9TT5G
 :url-tainted: https://github.com/test-network-function/cnf-certification-test/blob/main/CATALOG.md#platform-alteration-tainted-node-kernel
+:url-tainted-tp: https://github.com/rdavid/docs/blob/master/tainted-kernel-tech-preview.adoc
 :url-termination: https://github.com/test-network-function/cnf-certification-test/blob/main/CATALOG.md#observability-termination-policy
 :url-ubi: https://github.com/test-network-function/cnf-certification-test/blob/main/CATALOG.md#platform-alteration-isredhat-release
 
@@ -35,6 +36,8 @@ toc::[]
 | Acronym | Meaning
 | CNF | Containerized Network Function
 | OCP | OpenShift Container Platform
+| RHCOS | Red Hat Enterprise Linux CoreOS operating system
+| RHEL | Red Hat Enterprise Linux operating system
 |===
 
 == Overview
@@ -53,16 +56,27 @@ These cases are divided among nine different suites.
 == Operators
 
 We conducted the {url-cnf-cert}[CNF Certification Test] on over two hundred of
-{url-operators}[Red Hat's operators] on OCP {ocp-version}. As a result, we
-identified a total of over seven thousand failures. You can find more
-information in {url-reports}[the report].
+{url-operators}[Red Hat's operators] on OCP {ocp-version}.
+As a result, we identified a total of over seven thousand failures.
+You can find more information in {url-reports}[the report].
 
 == Failures
 
 The first priority should be addressing the most commonly required mandatory
 tests:
 
-- {url-tainted}[`platform-alteration-tainted-node-kernel`]
+- {url-tainted}[`platform-alteration-tainted-node-kernel`] [1]
 - {url-root}[`access-control-security-context-non-root-user-check`]
 - {url-termination}[`observability-termination-policy`]
 - {url-ubi}[`platform-alteration-isredhat-release`]
+
+[1] A known bug exists in OCP 4.12, specifically within RHCOS 8.6, causing test
+failures on one or more master nodes.
+Further details can be found in the
+{url-tainted-tp}[Tainted Kernel Tech Preview].
+We should differentiate between taints originating from our side (ideally none)
+and those arising from the CNF under test.
+
+The failures are categorized by operators in the
+{url-reports}[CNF Report for Operators on OCP 4.13].
+This method enables the filtering of failures based on specific operators.
