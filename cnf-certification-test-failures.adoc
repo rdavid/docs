@@ -8,6 +8,8 @@
 // Valiables
 :ocp-version: 4.13
 // URLs:
+:url-best-cnf: https://test-network-function.github.io/cnf-best-practices
+:url-best-operator: https://github.com/operator-framework/community-operators/blob/master/docs/best-practices.md
 :url-catalog: https://github.com/test-network-function/cnf-certification-test/blob/main/CATALOG.md
 :url-cnf-cert: https://github.com/test-network-function/cnf-certification-test
 :url-operators: https://docs.google.com/spreadsheets/d/1E_Xafj_QGjDondIXj6bi0qCU0KQiOIRbJICPYHnZd2s/edit#gid=0
@@ -45,7 +47,9 @@ toc::[]
 A major part of Telco partner certification is
 {url-cnf-cert}[CNF Certification Test].
 These test cases are specifically designed to verify whether the deployment of
-the Telco partner's solution on Red Hat OpenShift follows the best practices.
+the Telco partner's solution on Red Hat OpenShift follows the
+{url-best-cnf}[CNF Best Practices] and the
+{url-best-operator}[Operator Best Practices].
 By conducting these tests, we ensure that the implementation aligns with the
 recommended standards and guidelines for optimal performance and compatibility.
 
