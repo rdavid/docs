@@ -61,9 +61,11 @@ These cases are divided among nine different suites.
 
 We conducted the {url-cnf-cert}[CNF Certification Test] on over two hundred of
 {url-operators}[Red Hat's operators] on OCP {ocp-version}.
-As a result, we identified a total of over seven thousand failures.
-You can find more information in the
+Consequently, we have detected an average of approximately thirty failures per
+operator.
+For additional details, please refer to the
 {url-report}[CNF Report for Operators on OCP 4.13].
+You can use the operator name filter to narrow down your search.
 
 == Failures
 
