@@ -12,9 +12,8 @@
 :url-best-operator: https://github.com/operator-framework/community-operators/blob/master/docs/best-practices.md
 :url-catalog: https://github.com/test-network-function/cnf-certification-test/blob/main/CATALOG.md
 :url-cnf-cert: https://github.com/test-network-function/cnf-certification-test
-:url-most-common: https://docs.google.com/spreadsheets/d/1gSReYmkJtqRDDi_QNiYLpdS1X4d2Olk2/edit#gid=2625
-:url-operators: https://docs.google.com/spreadsheets/d/1E_Xafj_QGjDondIXj6bi0qCU0KQiOIRbJICPYHnZd2s/edit#gid=0
-:url-report: https://docs.google.com/spreadsheets/d/1203v6gXVn_9PdPihBmmbiFL-n_PZKnQBOa_Fa8gMfWc/edit#gid=2126293066
+:url-operators: https://docs.google.com/spreadsheets/d/1E_Xafj_QGjDondIXj6bi0qCU0KQiOIRbJICPYHnZd2s
+:url-report: https://docs.google.com/spreadsheets/d/1mYs8fpeBTmN4Mnnr1XOl0VxBO2pTQbjqo6rXlTVvpIs
 :url-slack: https://redhat-internal.slack.com/archives/C05PKB9TT5G
 :url-tainted: https://github.com/test-network-function/cnf-certification-test/blob/main/CATALOG.md#platform-alteration-tainted-node-kernel
 :url-tainted-nft: https://issues.redhat.com/browse/OCPBUGS-13330
@@ -29,6 +28,7 @@ toc::[]
 |===
 | Version | Date | Who | Changes
 | 1.0 | September 7, 2023 | David Rabkin | Initial Version
+| 1.1 | December 5, 2023 | David Rabkin | Updated results
 |===
 
 .Terminology
@@ -63,18 +63,17 @@ We conducted the {url-cnf-cert}[CNF Certification Test] on over two hundred of
 Consequently, we have detected an average of approximately thirty failures per
 operator.
 For additional details, please refer to the {url-report}[CNF Report for
-Operators on OCP 4.13 - September].
+Operators - 20231120].
 You can use the operator name filter to narrow down your search.
 
 == Failures
 
 The failures are categorized by operators in the {url-report}[CNF Report for
-Operators on OCP 4.13 - September].
+Operators - 20231120].
 The report enables the filtering of failures based on specific operators.
 
 The first priority should be addressing the most commonly required mandatory
-tests, see {url-most-common}[CNF Report for Operators on OCP 4.13 - September -
-Sorted].
+tests, see the frequencies tab in the report.
 
 image::images/most-common-failures.png[most-common,width=100%,align=center]
 
