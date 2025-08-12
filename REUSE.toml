@@ -1,0 +1,19 @@
+# SPDX-FileCopyrightText: 2025 David Rabkin
+# SPDX-License-Identifier: 0BSD
+version = 1
+[[annotations]]
+path = [
+	"**.adoc",
+	"**.pdf",
+	"**.png",
+	".dockerignore",
+	".DS_Store",
+	".github/styles/**",
+	".gitignore",
+	".vale.ini",
+	"README.adoc",
+	"themes/redhat-theme.yml",
+]
+precedence = "override"
+SPDX-FileCopyrightText = "2025 David Rabkin"
+SPDX-License-Identifier = "0BSD"
