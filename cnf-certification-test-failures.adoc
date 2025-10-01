@@ -5,7 +5,7 @@
 :toc: macro
 :!toc-title:
 
-// Valiables
+// Variables
 :ocp-version: 4.13
 // URLs:
 :url-best-cnf: https://test-network-function.github.io/cnf-best-practices
