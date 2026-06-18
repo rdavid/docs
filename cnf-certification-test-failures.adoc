@@ -29,6 +29,7 @@ toc::[]
 | Version | Date | Who | Changes
 | 1.0 | September 7, 2023 | David Rabkin | Initial Version
 | 1.1 | December 5, 2023 | David Rabkin | Updated results
+| 1.2 | June 19, 2026 | David Rabkin | Improved wording
 |===
 
 .Terminology
@@ -45,45 +46,39 @@ toc::[]
 
 A major part of Telco partner certification is
 {url-cnf-cert}[CNF Certification Test].
-These test cases are specifically designed to verify whether the deployment of
-the Telco partner's solution on Red Hat OpenShift follows the
-{url-best-cnf}[CNF Best Practices] and the
+These test cases verify that the Telco partner's solution, deployed on Red Hat
+OpenShift, follows the {url-best-cnf}[CNF Best Practices] and the
 {url-best-operator}[Operator Best Practices].
-By conducting these tests, we ensure that the implementation aligns with the
-recommended standards and guidelines for optimal performance and compatibility.
+The tests confirm that the implementation meets the recommended standards for
+performance and compatibility.
 
-In the suite, there are {url-catalog}[88 test cases], consisting of both
-mandatory and optional cases.
-These cases are divided among nine different suites.
+The suite holds {url-catalog}[88 test cases], both mandatory and optional,
+split across nine suites.
 
 == Operators
 
-We conducted the {url-cnf-cert}[CNF Certification Test] on over two hundred of
-{url-operators}[Red Hat's operators] on OCP {ocp-version}.
-Consequently, we have detected an average of approximately thirty failures per
-operator.
-For additional details, please refer to the {url-report}[CNF Report for
-Operators - 20231120].
-You can use the operator name filter to narrow down your search.
+We ran the {url-cnf-cert}[CNF Certification Test] on over two hundred
+{url-operators}[Red Hat operators] on OCP {ocp-version} and found an average of
+thirty failures per operator.
+For details, see the {url-report}[CNF Report for Operators - 20231120], where
+the operator-name filter narrows the search.
 
 == Failures
 
-The failures are categorized by operators in the {url-report}[CNF Report for
-Operators - 20231120].
-The report enables the filtering of failures based on specific operators.
+The {url-report}[CNF Report for Operators - 20231120] groups the failures by
+operator and lets you filter them per operator.
 
-The first priority should be addressing the most commonly required mandatory
-tests, see the frequencies tab in the report.
+Address the most common mandatory tests first; see the frequencies tab in the
+report.
 
 image::images/most-common-failures.png[most-common,width=100%,align=center]
 
 == Known Issues
 
-A known bug exists in OCP 4.12, specifically within RHCOS 8.6, causing
+A known bug in OCP 4.12, within RHCOS 8.6, causes
 {url-tainted}[`platform-alteration-tainted-node-kernel`] failures on one or
 more master nodes.
-Further details can be found in the {url-tainted-tp}[Tainted Kernel Tech
-Preview].
-There is another {url-tainted-nft}[known bug] present in OCP 4.13.
-We should differentiate between taints originating from our side (ideally none)
-and those arising from the CNF under test.
+The {url-tainted-tp}[Tainted Kernel Tech Preview] covers the details.
+OCP 4.13 carries another {url-tainted-nft}[known bug].
+We should distinguish taints that originate on our side (ideally none) from
+those the CNF under test introduces.
