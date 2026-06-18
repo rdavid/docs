@@ -18,6 +18,8 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v6.0.3
+        with:
+          persist-credentials: false
       - run: sudo apt-get install -y asciidoctor
       - uses: errata-ai/vale-action@2.1.2
         with:
