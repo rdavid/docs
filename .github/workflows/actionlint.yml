@@ -8,17 +8,18 @@ name: actionlint
     branches: [master]
 permissions:
   contents: read
+  checks: write
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
-env:
-  URL: https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash # yamllint disable-line
 jobs:
   actionlint:
     runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v6.0.3
-      - id: get
-        run: bash <(curl --silent "$URL")
-      - run: ${{ steps.get.outputs.executable }}
+        with:
+          persist-credentials: false
+      - uses: reviewdog/action-actionlint@v1.72.0
+        with:
+          fail_level: error
