@@ -26,7 +26,9 @@ toc::[]
 
 == About
 
-Some documents.
+Technical articles on Red Hat OpenShift certification for Telco partners,
+covering CNF Certification Test failures and the tainted-kernel tech-preview
+issue.
 
 == License
 
