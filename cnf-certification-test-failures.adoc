@@ -30,6 +30,7 @@ toc::[]
 | 1.0 | September 7, 2023 | David Rabkin | Initial Version
 | 1.1 | December 5, 2023 | David Rabkin | Updated results
 | 1.2 | June 19, 2026 | David Rabkin | Improved wording
+| 1.3 | September 1, 2026 | David Rabkin | Improved wording
 |===
 
 .Terminology
@@ -57,9 +58,9 @@ split across nine suites.
 
 == Operators
 
-We ran the {url-cnf-cert}[CNF Certification Test] on over two hundred
-{url-operators}[Red Hat operators] on OCP {ocp-version} and found an average of
-thirty failures per operator.
+The certification team ran the {url-cnf-cert}[CNF Certification Test] on over
+two hundred {url-operators}[Red Hat operators] on OCP {ocp-version}, finding an
+average of thirty failures per operator.
 For details, see the {url-report}[CNF Report for Operators - 20231120], where
 the operator-name filter narrows the search.
 
@@ -68,8 +69,8 @@ the operator-name filter narrows the search.
 The {url-report}[CNF Report for Operators - 20231120] groups the failures by
 operator and lets you filter them per operator.
 
-Address the most common mandatory tests first; see the frequencies tab in the
-report.
+Address the most common mandatory tests first.
+See the frequencies tab in the report.
 
 image::images/most-common-failures.png[most-common,width=100%,align=center]
 
@@ -80,5 +81,5 @@ A known bug in OCP 4.12, within RHCOS 8.6, causes
 more master nodes.
 The {url-tainted-tp}[Tainted Kernel Tech Preview] covers the details.
 OCP 4.13 carries another {url-tainted-nft}[known bug].
-We should distinguish taints that originate on our side (ideally none) from
-those the CNF under test introduces.
+The certification team should distinguish taints that originate on the
+platform side, ideally none, from those the CNF under test introduces.

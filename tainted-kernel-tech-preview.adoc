@@ -27,6 +27,7 @@ toc::[]
 | Version | Date | Who | Changes
 | 1.0 | Jun 27, 2023 | David Rabkin | Initial Version
 | 1.1 | Jun 19, 2026 | David Rabkin | Improved wording
+| 1.2 | Sep 1, 2026 | David Rabkin | Improved wording
 |===
 
 .Terminology
@@ -57,8 +58,8 @@ One of the {url-catalog}[88 test cases] in the suite is
 It verifies that the nodes hosting CNFs do not run tainted kernels.
 For more on tainted kernels in Linux, see the {url-linux}[documentation].
 
-While certifying OCP 4.10 and 4.11, our team hit difficulties with tainted
-kernels.
+While certifying OCP 4.10 and 4.11, the certification team hit difficulties
+with tainted kernels.
 Most failures came from incomplete kernel updates or outdated BIOS firmware.
 Reboots and a BIOS firmware update resolved them.
 For more, see this well-written article on the {url-solution}[issue].
@@ -92,11 +93,12 @@ sh-4.4# cat /proc/sys/kernel/tainted
 ```
 
 The tainted kernel test keeps failing on one of the master nodes.
-{url-dci-master-1}[The job] reports the failure on `master-1`; when I reboot
-that master, {url-dci-master-2}[the failure] moves to the next one, `master-2`.
-The failure migrates in a `0→>1→>2→>0` sequence after each reboot.
+{url-dci-master-1}[The job] reports the failure on `master-1`.
+After a reboot of that master, {url-dci-master-2}[the failure] moves to the
+next one, `master-2`.
+The failure migrates in a `0→1→2→0` sequence after each reboot.
 
-OCP 4.12 uses RHCOS based on 8.6.
+OCP 4.12 uses RHCOS based on RHEL 8.6.
 From {url-solution}[here]:
 ```
 With the TAINT_TECH_PREVIEW mask value being removed upstream and within RHEL 9
@@ -128,8 +130,8 @@ The certification team struggles to explain why the GA version of OCP 4.12 uses
 `kTLS`, which is still in Technical Preview.
 The situation concerns security experts, who could read it as a security
 vulnerability.
-The tests our partners run on their CNFs sharpen the need to address the issue
-and give a clear explanation.
+The tests partners run on their CNFs sharpen the need to address the issue and
+give a clear explanation.
 
 == Resolution
 
