@@ -10,17 +10,21 @@
 :url-hoc: https://hitsofcode.com/view/github/rdavid/docs?branch=master
 :url-license: https://github.com/rdavid/docs/blob/master/LICENSE
 :url-rh: https://www.redhat.com
-:url-vale: https://github.com/rdavid/docs/actions/workflows/vale.yml
 :url-typos: https://github.com/crate-ci/typos
-:url-vale: https://vale.sh
+:url-vale: https://github.com/rdavid/docs/actions/workflows/vale.yml
 :url-yamllint: https://github.com/adrienverge/yamllint
 
 = Documents
 
-image:{img-vale}[vale,link={url-vale}]
-image:{img-hoc}[hits of code,link={url-hoc}]
-image:{img-rh}[red hat,link={url-rh}]
-image:{img-license}[license,link={url-license}]
+[subs=attributes+]
+++++
+<div align="right">
+<a href="{url-vale}"><img src="{img-vale}" alt="vale"></a>
+<a href="{url-hoc}"><img src="{img-hoc}" alt="hits of code"></a>
+<a href="{url-rh}"><img src="{img-rh}" alt="red hat"></a>
+<a href="{url-license}"><img src="{img-license}" alt="license"></a>
+</div>
+++++
 
 toc::[]
 
