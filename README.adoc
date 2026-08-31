@@ -3,9 +3,9 @@
 :!toc-title:
 // URLs:
 :img-hoc: https://hitsofcode.com/github/rdavid/docs?branch=master&label=hits%20of%20code
-:img-license: https://img.shields.io/github/license/rdavid/docs?color=blue&labelColor=gray&logo=freebsd&logoColor=lightgray&style=flat
-:img-rh: https://img.shields.io/badge/red%20hat---?color=gray&logo=redhat&logoColor=red&style=flat
-:img-vale: https://github.com/rdavid/docs/actions/workflows/vale.yml/badge.svg
+:img-license: https://img.shields.io/github/license/rdavid/docs?color=94bff3&labelColor=555555&logo=freebsd&logoColor=dcdccc&style=flat
+:img-rh: https://img.shields.io/badge/red%20hat---?color=dfaf8f&labelColor=555555&logo=redhat&logoColor=dcdccc&style=flat
+:img-vale: https://img.shields.io/github/actions/workflow/status/rdavid/docs/vale.yml?branch=master&color=7f9f7f&label=vale&labelColor=555555&logo=githubactions&logoColor=dcdccc&style=flat
 :url-cv: http://cv.rabkin.co.il
 :url-hoc: https://hitsofcode.com/view/github/rdavid/docs?branch=master
 :url-license: https://github.com/rdavid/docs/blob/master/LICENSE
