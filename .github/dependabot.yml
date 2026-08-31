@@ -9,7 +9,3 @@ updates:
       interval: daily
     commit-message:
       prefix: build(deps)
-    groups:
-      actions:
-        patterns:
-          - "*"
