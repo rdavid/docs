@@ -28,6 +28,7 @@ toc::[]
 | 1.0 | Jun 27, 2023 | David Rabkin | Initial Version
 | 1.1 | Jun 19, 2026 | David Rabkin | Improved wording
 | 1.2 | Sep 1, 2026 | David Rabkin | Improved wording
+| 1.3 | Sep 12, 2026 | David Rabkin | Improved wording
 |===
 
 .Terminology
@@ -55,7 +56,7 @@ performance and compatibility.
 
 One of the {url-catalog}[88 test cases] in the suite is
 `platform-alteration-tainted-node-kernel`.
-It verifies that the nodes hosting CNFs do not run tainted kernels.
+It verifies that the nodes hosting CNFs don't run tainted kernels.
 For more on tainted kernels in Linux, see the {url-linux}[documentation].
 
 While certifying OCP 4.10 and 4.11, the certification team hit difficulties
