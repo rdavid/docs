@@ -3,9 +3,9 @@
 :!toc-title:
 // URLs:
 :img-hoc: https://hitsofcode.com/github/rdavid/docs?branch=master&label=hits%20of%20code
-:img-license: https://img.shields.io/github/license/rdavid/docs?color=94bff3&labelColor=555555&logo=freebsd&logoColor=dcdccc&style=flat
+:img-license: https://img.shields.io/github/license/rdavid/docs?color=94bff3&labelColor=555555&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI%2BPHRleHQgeD0iMTIiIHk9IjIwIiBmb250LWZhbWlseT0iSGVsdmV0aWNhLEFyaWFsLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNkY2RjY2MiPiYjMTY5OzwvdGV4dD48L3N2Zz4%3D&style=flat
 :img-rh: https://img.shields.io/badge/red%20hat---?color=dfaf8f&labelColor=555555&logo=redhat&logoColor=dcdccc&style=flat
-:img-vale: https://img.shields.io/github/actions/workflow/status/rdavid/docs/vale.yml?branch=master&color=7f9f7f&label=vale&labelColor=555555&logo=githubactions&logoColor=dcdccc&style=flat
+:img-vale: https://img.shields.io/github/actions/workflow/status/rdavid/docs/vale.yml?branch=master&color=7f9f7f&label=vale&labelColor=555555&logo=lintcode&logoColor=dcdccc&style=flat
 :url-cv: http://cv.rabkin.co.il
 :url-hoc: https://hitsofcode.com/view/github/rdavid/docs?branch=master
 :url-license: https://github.com/rdavid/docs/blob/master/LICENSE
@@ -20,8 +20,8 @@
 ++++
 <div align="right">
 <a href="{url-vale}"><img src="{img-vale}" alt="vale"></a>
-<a href="{url-hoc}"><img src="{img-hoc}" alt="hits of code"></a>
 <a href="{url-rh}"><img src="{img-rh}" alt="red hat"></a>
+<a href="{url-hoc}"><img src="{img-hoc}" alt="hits of code"></a>
 <a href="{url-license}"><img src="{img-license}" alt="license"></a>
 </div>
 ++++
