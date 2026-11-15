@@ -6,12 +6,20 @@
 :img-license: https://img.shields.io/github/license/rdavid/docs?color=94bff3&labelColor=555555&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI%2BPHRleHQgeD0iMTIiIHk9IjIwIiBmb250LWZhbWlseT0iSGVsdmV0aWNhLEFyaWFsLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNkY2RjY2MiPiYjMTY5OzwvdGV4dD48L3N2Zz4%3D&style=flat
 :img-rh: https://img.shields.io/badge/red%20hat---?color=dfaf8f&labelColor=555555&logo=redhat&logoColor=dcdccc&style=flat
 :img-vale: https://img.shields.io/github/actions/workflow/status/rdavid/docs/vale.yml?branch=master&color=7f9f7f&label=vale&labelColor=555555&logo=lintcode&logoColor=dcdccc&style=flat
+:url-actionlint: https://github.com/rhysd/actionlint
+:url-adoc-pdf: https://docs.asciidoctor.org/pdf-converter/latest
+:url-cnf: https://github.com/rdavid/docs/blob/master/cnf-certification-test-failures.adoc
+:url-cnf-pdf: https://github.com/rdavid/docs/blob/master/cnf-certification-test-failures.pdf
 :url-cv: http://cv.rabkin.co.il
 :url-hoc: https://hitsofcode.com/view/github/rdavid/docs?branch=master
 :url-license: https://github.com/rdavid/docs/blob/master/LICENSE
+:url-reuse: https://reuse.software
 :url-rh: https://www.redhat.com
+:url-tainted: https://github.com/rdavid/docs/blob/master/tainted-kernel-tech-preview.adoc
+:url-tainted-pdf: https://github.com/rdavid/docs/blob/master/tainted-kernel-tech-preview.pdf
 :url-typos: https://github.com/crate-ci/typos
 :url-vale: https://github.com/rdavid/docs/actions/workflows/vale.yml
+:url-vale-home: https://vale.sh
 :url-yamllint: https://github.com/adrienverge/yamllint
 
 = Documents
@@ -42,9 +50,42 @@ endif::[]
 
 == About
 
-Technical articles on Red Hat OpenShift certification for Telco partners,
-covering CNF Certification Test failures and the tainted-kernel tech-preview
-issue.
+Technical articles on {url-rh}[Red Hat] OpenShift certification for Telco
+partners.
+Each article lives in AsciiDoc and comes with a rendered PDF.
+
+[cols="2,4,1"]
+|===
+| Title | Summary | PDF
+
+| {url-cnf}[CNF Certification Test failures]
+| The most common test failures and which ones to address first.
+| {url-cnf-pdf}[PDF]
+
+| {url-tainted}[Tainted kernel tech preview]
+| Why tech-preview kernel features taint a node and fail certification.
+| {url-tainted-pdf}[PDF]
+|===
+
+== Build
+
+Render a PDF with {url-adoc-pdf}[`asciidoctor-pdf`] and the bundled Red Hat
+theme:
+
+[source,sh]
+----
+asciidoctor-pdf \
+  --attribute pdf-theme=redhat \
+  --attribute pdf-themesdir=themes \
+  tainted-kernel-tech-preview.adoc
+----
+
+The theme expects the Red Hat fonts under `/usr/share/fonts/redhat`.
+
+Every push and pull request runs {url-vale-home}[`vale`] for prose,
+{url-typos}[`typos`] for spelling, {url-yamllint}[`yamllint`] and
+{url-actionlint}[`actionlint`] for configuration, and {url-reuse}[`reuse`]
+for licensing.
 
 == License
 

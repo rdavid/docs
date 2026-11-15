@@ -7,6 +7,7 @@ SPDX-License-Identifier: 0BSD
 :root {
   --bg: #3f3f3f;
   --bg-panel: #2b2b2b;
+  --bg-header: #1f1f1f;
   --fg: #dcdccc;
   --fg-muted: #7f9f7f;
   --accent-yellow: #f0dfaf;
@@ -115,6 +116,33 @@ code {
 @media (max-width: 560px) {
   #content #toc { justify-content: flex-start; gap: 1em 1.5em; }
   #toc ul.sectlevel1 { gap: 1em 1.2em; font-size: 0.86em; }
+}
+table.tableblock {
+  background: var(--bg-panel) !important;
+  border-color: var(--border) !important;
+}
+table.tableblock tr,
+table.tableblock tr:nth-of-type(even),
+table.tableblock thead,
+table.tableblock tfoot {
+  background: transparent !important;
+}
+table.tableblock th,
+table.tableblock td {
+  border-color: var(--border) !important;
+}
+table.tableblock th,
+table.tableblock td,
+table.tableblock p.tableblock {
+  color: var(--fg) !important;
+}
+table.tableblock thead th {
+  background: var(--bg-header) !important;
+}
+table.tableblock thead th,
+table.tableblock thead th p.tableblock {
+  font-family: var(--mono);
+  color: var(--accent-yellow) !important;
 }
 hr, .sect1 + .sect1 { border-color: var(--border) !important; }
 </style>
