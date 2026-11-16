@@ -11,6 +11,8 @@
 :url-author: https://rdavid.github.io
 :url-cnf: https://github.com/rdavid/docs/blob/master/cnf-certification-test-failures.adoc
 :url-cnf-pdf: https://github.com/rdavid/docs/blob/master/cnf-certification-test-failures.pdf
+:url-conform: https://github.com/siderolabs/conform
+:url-gitleaks: https://github.com/gitleaks/gitleaks
 :url-hoc: https://hitsofcode.com/view/github/rdavid/docs?branch=master
 :url-license: https://github.com/rdavid/docs/blob/master/LICENSE
 :url-reuse: https://reuse.software
@@ -21,6 +23,7 @@
 :url-vale: https://github.com/rdavid/docs/actions/workflows/vale.yml
 :url-vale-home: https://vale.sh
 :url-yamllint: https://github.com/adrienverge/yamllint
+:url-zizmor: https://docs.zizmor.sh
 
 = Documents
 
@@ -83,9 +86,14 @@ asciidoctor-pdf \
 The theme expects the Red Hat fonts under `/usr/share/fonts/redhat`.
 
 Every push and pull request runs {url-vale-home}[`vale`] for prose,
-{url-typos}[`typos`] for spelling, {url-yamllint}[`yamllint`] and
-{url-actionlint}[`actionlint`] for configuration, and {url-reuse}[`reuse`]
-for licensing.
+{url-typos}[`typos`] for spelling, {url-reuse}[`reuse`] for licensing,
+{url-conform}[`conform`] for commit messages, and
+{url-gitleaks}[`gitleaks`] for secrets.
+Changes under `.github` also run {url-yamllint}[`yamllint`] and
+{url-actionlint}[`actionlint`] for configuration and {url-zizmor}[`zizmor`]
+for workflow security.
+A pull request that touches the site builds it with warnings as errors.
+A push to `master` also deploys it to GitHub Pages.
 
 == License
 

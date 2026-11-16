@@ -4,13 +4,21 @@
 name: yamllint
 'on':
   pull_request:
+    paths: &paths
+      - .github/**
+      - .conform.yaml
   push:
     branches: [master]
+    paths: *paths
+  workflow_dispatch:
 permissions:
   contents: read
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+defaults:
+  run:
+    shell: sh
 jobs:
   yamllint:
     runs-on: ubuntu-24.04
@@ -24,4 +32,5 @@ jobs:
           file_or_dir: >
             ./.github/*.yml
             ./.github/workflows/*.yml
+            ./.conform.yaml
           strict: true
