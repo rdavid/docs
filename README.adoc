@@ -8,9 +8,9 @@
 :img-vale: https://img.shields.io/github/actions/workflow/status/rdavid/docs/vale.yml?branch=master&color=7f9f7f&label=vale&labelColor=555555&logo=lintcode&logoColor=dcdccc&style=flat
 :url-actionlint: https://github.com/rhysd/actionlint
 :url-adoc-pdf: https://docs.asciidoctor.org/pdf-converter/latest
+:url-author: https://rdavid.github.io
 :url-cnf: https://github.com/rdavid/docs/blob/master/cnf-certification-test-failures.adoc
 :url-cnf-pdf: https://github.com/rdavid/docs/blob/master/cnf-certification-test-failures.pdf
-:url-cv: http://cv.rabkin.co.il
 :url-hoc: https://hitsofcode.com/view/github/rdavid/docs?branch=master
 :url-license: https://github.com/rdavid/docs/blob/master/LICENSE
 :url-reuse: https://reuse.software
@@ -89,7 +89,7 @@ for licensing.
 
 == License
 
-`docs` is copyright {url-cv}[David Rabkin] and available under a
+`docs` is copyright {url-author}[David Rabkin] and available under a
 {url-license}[Zero-Clause BSD license].
 
 ifdef::pages-build[]
